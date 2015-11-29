@@ -1,0 +1,48 @@
+<html>
+<head>
+<script>
+function fun()
+{
+  var a= new XMLHttpRequest();
+  a.onreadystatechange=function()
+{
+ if(a.readyState == 4 && a.Status == 200)
+	{
+	f(a);
+	}
+}
+	a.open("GET","Registration.xml",true);
+	a.send();
+}
+function f(x)
+{
+	var a=x.responseXML;
+	var y=document.getElementById("nm").value;
+	var z= a.getElementsByTagname("Member").value;
+	for(var i=0; i<3; i++)
+	{
+	 var b=y[i].getElementsByTagName("Name")[0].childNodes[0].nodeValue;
+	if(b==("Member Name: "+y))
+	{
+	var c=b[i].getElementsByTagName("Phone")[0].childNodes[0].nodeValue;
+	var d=b[i].getElementsByTagName("Serial")[0].childNodes[0].nodeValue;
+	document.write(b+"<br>"+c+"<br>"+d);
+	}
+	}
+
+}
+
+</script>
+</head>
+
+
+<body>
+<form name="f1">
+<table>
+<input type="text" id="nm">
+<button onclick="fun()"> OK </button>
+</table>
+
+</form>
+</body>
+</html>
